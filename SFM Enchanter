@@ -1,0 +1,296 @@
+
+--Labels:
+--enchant1, enchant2 decide enchant type
+--level designates level of enchant (I, II, etc)
+--Inventory a hold reagents
+--Inventory b is a lectern linked to enchanting apparatus platforms
+--Manually add item (book, weapon, etc) to a hopper pushing into enchanting apparatus
+
+EVERY REDSTONE PULSE DO
+INPUT FROM a
+
+--BOOTS
+IF enchant1 HAS >= 1 diamond_boots THEN
+     --Depth Strider 3
+    IF enchant2 HAS >= 1 water_essence THEN
+        IF level HAS >= 1 coal_shard THEN
+            OUTPUT 2 source_gem_block, 2 water_essence TO b
+        ELSE IF level HAS >= 1 redstone_shard THEN
+            OUTPUT 2 source_gem_block, 2 water_essence, 2 prismarine_shard TO b
+        ELSE IF level HAS >= 1 lapis_shard THEN
+            OUTPUT 3 source_gem_block, 4 water_essence, 1 nautilus_shell TO b
+        END    
+    --Feather Falling 4
+    ELSE IF enchant2 HAS >= 1 air_essence THEN
+        IF level HAS >= 1 coal_shard THEN
+            OUTPUT 2 source_gem_block, 1 air_essence, 1 slime_ball TO b
+        ELSE IF level HAS >= 1 redstone_shard THEN
+            OUTPUT 2 source_gem_block, 2 air_essence, 1 slime_ball TO b
+        ELSE IF level HAS >= 1 lapis_shard THEN
+            OUTPUT 2 source_gem_block, 2 lapis_block, 3 air_essence, 1 slime_ball TO b
+        ELSE IF level HAS >= 1 gold_shard THEN
+            OUTPUT 2 source_gem_block, 2 lapis_block, 4 air_essence TO b
+        END  
+    END
+
+--BOW
+ELSE IF enchant1 HAS >= 1 bow THEN
+    --Infinity 1
+    IF enchant2 HAS >= 1 diamond THEN
+        OUTPUT 1 diamond_block, 7 air_essence TO b
+    
+    --Flame 1
+    ELSE IF enchant2 HAS >= 1 fire_essence THEN
+        OUTPUT 1 blaze_rod, 1 fire_essence, 1 air_essence TO b
+
+    --Punch 2
+    ELSE IF enchant2 HAS >= 1 air_essence THEN
+        IF level HAS >= 1 coal_shard THEN
+            OUTPUT 2 source_gem_block, 2 air_essence TO b
+        ELSE IF level HAS >= 1 redstone_shard THEN
+            OUTPUT 2 source_gem_block, 3 air_essence TO b
+        END 
+
+    --Power 5
+    ELSE IF enchant2 HAS >= 1 arrow THEN
+        IF level HAS >= 1 coal_shard THEN
+            OUTPUT 1 source_gem_block, 1 air_essence, 1 diamond TO b
+        ELSE IF level HAS >= 1 redstone_shard THEN
+            OUTPUT 2 source_gem_block, 1 air_essence, 2 diamond TO b
+        ELSE IF level HAS >= 1 lapis_shard THEN
+            OUTPUT 2 source_gem_block, 1 air_essence, 3 diamond, 2 lapis_block TO b
+        ELSE IF level HAS >= 1 gold_shard THEN  
+            OUTPUT 1 source_gem_block, 1 air_essence, 4 diamond, 2 lapis_block TO b
+        ELSE IF level HAS >= 1 diamond_shard THEN
+            OUTPUT 1 source_gem_block, 1 air_essence, 5 diamond, 1 lapis_block TO b
+        END 
+    END
+
+--HELM
+ELSE IF enchant1 HAS >= 1 diamond_helm THEN
+    --Aqua Affinty 1
+    IF enchant2 HAS >= 1 water_essence THEN
+        OUTPUT 2 source_gem_block, 2 lapis_block, 4 cod TO b
+
+    --Respiration 3
+    ELSE IF enchant2 HAS >= 1 air_essence THEN
+        IF level HAS >= 1 coal_shard THEN
+            OUTPUT 2 source_gem_block, 1 water_essence TO b
+        ELSE IF level HAS >= 1 redstone_shard THEN
+            OUTPUT 4 source_gem_block, 4 water_essence TO b
+        ELSE IF level HAS >= 1 lapis_shard THEN
+            OUTPUT 2 source_gem_block, 6 water_essence TO b
+        END
+    END
+
+--CHEST
+ELSE IF enchant1 HAS >= 1 diamond_chestplate THEN
+    --Protection 5
+    IF enchant2 HAS >= 1 earth_essence THEN
+        IF level HAS >= 1 coal_shard THEN
+            OUTPUT 2 source_gem_block, 1 lapis_block, 1 abjuration_essence, 1 manipulation_essence TO b
+        ELSE IF level HAS >= 1 redstone_shard THEN
+            OUTPUT 2 source_gem_block, 2 lapis_block, 1 abjuration_essence, 2 manipulation_essence TO b
+        ELSE IF level HAS >= 1 lapis_shard THEN
+            OUTPUT 3 source_gem_block, 2 lapis_block, 1 abjuration_essence, 2 manipulation_essence TO b
+        ELSE IF level HAS >= 1 gold_shard THEN  
+            OUTPUT 2 source_gem_block, 2 lapis_block, 2 abjuration_essence, 2 manipulation_essence TO b
+        ELSE IF level HAS >= 1 diamond_shard THEN
+            OUTPUT 1 source_gem_block, 1 diamond_block, 3 abjuration_essence, 3 manipulation_essence TO b
+        END    
+
+    --Projectile Protection 5
+    ELSE IF enchant2 HAS >= 1 arrow THEN
+        IF level HAS >= 1 coal_shard THEN
+            OUTPUT 2 source_gem_block, 1 air_essence, 1 abjuration_essence, 1 arrow TO b
+        ELSE IF level HAS >= 1 redstone_shard THEN
+            OUTPUT 2 source_gem_block, 2 air_essence, 1 abjuration_essence, 1 arrow TO b
+        ELSE IF level HAS >= 1 lapis_shard THEN
+            OUTPUT 3 source_gem_block, 2 air_essence, 1 abjuration_essence, 1 arrow TO b
+        ELSE IF level HAS >= 1 gold_shard THEN  
+            OUTPUT 2 source_gem_block, 2 air_essence, 2 abjuration_essence, 1 arrow TO b
+        ELSE IF level HAS >= 1 diamond_shard THEN
+            OUTPUT 1 source_gem_block, 3 air_essence, 3 abjuration_essence, 1 arrow TO b
+        END      
+
+    --Fire Protection 5
+    ELSE IF enchant2 HAS >= 1 fire_essence THEN
+        IF level HAS >= 1 coal_shard THEN
+            OUTPUT 2 source_gem_block, 1 fire_essence, 1 abjuration_essence TO b
+        ELSE IF level HAS >= 1 redstone_shard THEN
+            OUTPUT 2 source_gem_block, 2 fire_essence, 1 abjuration_essence TO b
+        ELSE IF level HAS >= 1 lapis_shard THEN
+            OUTPUT 3 source_gem_block, 2 fire_essence, 1 abjuration_essence, 1 blaze_rod TO b
+        ELSE IF level HAS >= 1 gold_shard THEN  
+            OUTPUT 2 source_gem_block, 2 fire_essence, 2 abjuration_essence, 2 blaze_rod TO b
+        ELSE IF level HAS >= 1 diamond_shard THEN
+            OUTPUT 1 source_gem_block, 3 fire_essence, 3 abjuration_essence, 1 blaze_rod TO b
+        END      
+    END
+
+--PICK
+ELSE IF enchant1 HAS >= 1 diamond_pickaxe THEN
+    --Silk Touch 1
+    IF enchant2 HAS >= 1 air_essence THEN
+        OUTPUT 2 source_gem_block, 2 lapis_block, 2 emerald, 2 diamond TO b
+
+    --Fortune 3
+    ELSE IF enchant2 HAS >= 1 diamond THEN
+        IF level HAS >= 1 coal_shard THEN
+            OUTPUT 6 source_gem_block, 1 earth_essence, 1 diamond TO b
+        ELSE IF level HAS >= 1 redstone_shard THEN
+            OUTPUT 2 source_gem_block, 2 earth_essence, 4 diamond TO b
+        ELSE IF level HAS >= 1 lapis_shard THEN
+            OUTPUT 2 source_gem_block, 3 earth_essence, 1 diamond_block, 2 lapis_block TO b
+        END      
+
+    --Efficiency 5
+    ELSE IF enchant2 HAS >= 1 earth_essence THEN
+        IF level HAS >= 1 coal_shard THEN
+            OUTPUT 2 source_gem_block, 1 sugar, 1 iron_pickaxe TO b
+        ELSE IF level HAS >= 1 redstone_shard THEN
+            OUTPUT 2 source_gem_block, 1 redstone_block, 1 golden_pickaxe TO b
+        ELSE IF level HAS >= 1 lapis_shard THEN
+            OUTPUT 3 source_gem_block, 2 redstone_block, 2 obsidian, 1 golden_pickaxe TO b
+        ELSE IF level HAS >= 1 gold_shard THEN  
+            OUTPUT 2 source_gem_block, 2 redstone_block, 2 obsidian, 1 diamond_pickaxe, 1 iron_shovel TO b
+        ELSE IF level HAS >= 1 diamond_shard THEN
+            OUTPUT 2 source_gem_block, 2 redstone_block, 2 lapis_block, 1 diamond_pickaxe, 1 diamond_shovel TO b
+        END      
+    END
+
+--SWORD
+ELSE IF enchant1 HAS >= 1 diamond_sword THEN
+    --Fire Aspect 2
+    IF enchant2 HAS >= 1 fire_essence THEN
+        IF level HAS >= 1 coal_shard THEN
+            OUTPUT 2 source_gem_block, 2 lapis_block, 1 fire_essence TO b
+        ELSE IF level HAS >= 1 redstone_shard THEN
+            OUTPUT 2 source_gem_block, 2 lapis_block, 2 fire_essence TO b
+        END    
+
+    --Knockback 2
+    ELSE IF enchant2 HAS >= 1 earth_essence THEN
+        IF level HAS >= 1 coal_shard THEN
+            OUTPUT 2 source_gem_block, 1 air_essence, 1 manipulation_essence TO b
+        ELSE IF level HAS >= 1 redstone_shard THEN
+            OUTPUT 2 source_gem_block, 2 air_essence, 1 manipulation_essence TO b
+        END    
+
+    --Sweeping Edge 3
+    ELSE IF enchant2 HAS >= 1 air_essence THEN
+        IF level HAS >= 1 coal_shard THEN
+            OUTPUT 1 source_gem_block, 1 lapis_block, 1 manipulation_essence TO b
+        ELSE IF level HAS >= 1 redstone_shard THEN
+            OUTPUT 2 source_gem_block, 2 lapis_block, 2 manipulation_essence TO b
+        ELSE IF level HAS >= 1 lapis_shard THEN
+            OUTPUT 2 source_gem_block, 3 lapis_block, 3 manipulation_essence TO b
+        END    
+
+    --Looting 3
+    ELSE IF enchant2 HAS >= 1 diamond THEN
+        IF level HAS >= 1 coal_shard THEN
+            OUTPUT 6 source_gem_block, 1 earth_essence, 1 emerald TO b
+        ELSE IF level HAS >= 1 redstone_shard THEN
+            OUTPUT 2 source_gem_block, 2 earth_essence, 4 emerald TO b
+        ELSE IF level HAS >= 1 lapis_shard THEN
+            OUTPUT 2 source_gem_block, 3 earth_essence, 2 lapis_block, 1 emerald_block TO b
+        END    
+
+    --Sharpness 5
+    ELSE IF enchant2 HAS >= 1 quartz THEN
+        IF level HAS >= 1 coal_shard THEN
+            OUTPUT 1 source_gem_block, 2 quartz_block, 1 lapis_block TO b
+        ELSE IF level HAS >= 1 redstone_shard THEN
+            OUTPUT 2 source_gem_block, 2 quartz_block, 1 lapis_block TO b
+        ELSE IF level HAS >= 1 lapis_shard THEN
+            OUTPUT 1 diamond, 2 quartz_block, 1 lapis_block TO b
+        ELSE IF level HAS >= 1 gold_shard THEN  
+            OUTPUT 2 diamond, 2 quartz_block, 1 lapis_block TO b
+        ELSE IF level HAS >= 1 diamond_shard THEN
+            OUTPUT 2 diamond, 2 quartz_block, 2 lapis_block TO b
+        END    
+
+    --Smite 5
+    ELSE IF enchant2 HAS >= 1 skeleton_skull THEN
+        IF level HAS >= 1 coal_shard THEN
+            OUTPUT 1 source_gem_block, 2 bone_block, 1 lapis_block TO b
+        ELSE IF level HAS >= 1 redstone_shard THEN
+            OUTPUT 1 source_gem_block, 3 bone_block, 1 lapis_block TO b
+        ELSE IF level HAS >= 1 lapis_shard THEN
+            OUTPUT 1 source_gem_block, 4 bone_block, 1 lapis_block TO b
+        ELSE IF level HAS >= 1 gold_shard THEN  
+            OUTPUT 2 source_gem_block, 4 bone_block, 1 lapis_block TO b
+        ELSE IF level HAS >= 1 diamond_shard THEN
+            OUTPUT 2 source_gem_block, 4 bone_block, 2 lapis_block TO b
+        END    
+    END
+
+--SHIELD
+ELSE IF enchant1 HAS >= 1 shield THEN
+    --Unbreaking 3
+    IF enchant2 HAS >= 1 diamond THEN
+        IF level HAS >= 1 coal_shard THEN
+            OUTPUT 1 source_gem_block, 1 lapis_block, 1 diamond, 1 abjuration_essence TO b
+        ELSE IF level HAS >= 1 redstone_shard THEN
+            OUTPUT 2 source_gem_block, 1 lapis_block, 2 diamond, 1 abjuration_essence TO b
+        ELSE IF level HAS >= 1 lapis_shard THEN
+            OUTPUT 2 source_gem_block, 2 lapis_block, 3 diamond, 1 abjuration_essence TO b
+        END    
+
+    --Reactive 4
+    ELSE IF enchant2 HAS >= 1 quartz THEN
+        IF level HAS >= 1 coal_shard THEN
+            OUTPUT 1 source_gem_block, 1 lapis_block, 1 spell_parchment TO b
+        ELSE IF level HAS >= 1 redstone_shard THEN
+            OUTPUT 1 water_essence, 1 earth_essence, 1 air_essence, 1 fire_essence, 4 blaze_powder TO b
+        ELSE IF level HAS >= 1 lapis_shard THEN
+            OUTPUT 1 ender_pearl, 1 manipulation_essence, 1 abjuration_essence, 1 conjuration_essence, 4 emerald TO b
+        ELSE IF level HAS >= 1 gold_shard THEN  
+            OUTPUT 1 ender_pearl, 1 wilden_tribute, 4 diamond TO b
+        END  
+    
+    --Spell Reflect 3
+    ELSE IF enchant2 HAS >= 1 water_essence THEN
+        IF level HAS >= 1 coal_shard THEN
+            OUTPUT 1 spell_prism, 1 abjuration_essence, 1 manipulation_essence TO b
+        ELSE IF level HAS >= 1 redstone_shard THEN
+            OUTPUT 1 spell_mirror, 1 water_essence, 1 earth_essence, 1 air_essence, 1 fire_essence TO b
+        ELSE IF level HAS >= 1 lapis_shard THEN
+            OUTPUT 1 source_gem_block, 1 totem_of_undying, 1 enchanters_mirror TO b
+        END    
+    END
+
+
+
+--MAGEBLOOM
+ELSE IF enchant1 HAS >= 1 magebloom THEN
+    --Soulbound
+    IF enchant2 HAS >= 1 skeleton_skull THEN
+        OUTPUT 1 source_gem_block, 1 lapis_block, 1 totem_of_undying, 1 anima_essence TO b
+
+    --Mana Boost
+    ELSE IF enchant2 HAS >= 1 diamond THEN
+        IF level HAS >= 1 coal_shard THEN
+            OUTPUT 4 source_gem_block, 1 sourceberry_bush TO b
+        ELSE IF level HAS >= 1 redstone_shard THEN
+            OUTPUT 4 source_gem_block, 1 sourceberry_bush, 2 lapis_block, 1 diamond TO b
+        ELSE IF level HAS >= 1 lapis_shard THEN
+            OUTPUT 4 source_gem_block, 1 sourceberry_bush, 1 lapis_block, 2 diamond TO b
+
+    --Mana Regen
+    ELSE IF enchant2 HAS >= 1 sourceberry_bush THEN
+        IF level HAS >= 1 coal_shard THEN
+            OUTPUT 2 source_gem_block, 2 sourceberry_bush, 2 lapis_block TO b
+        ELSE IF level HAS >= 1 redstone_shard THEN
+            OUTPUT 2 source_gem_block, 2 sourceberry_bush, 2 lapis_block, 2 abjuration_essence TO b
+        ELSE IF level HAS >= 1 lapis_shard THEN
+            OUTPUT 2 source_gem_block, 2 sourceberry_bush, 1 lapis_block, 3 abjuration_essence TO b
+    END
+END
+
+END
+
+END
+
+END
